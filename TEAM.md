@@ -2,10 +2,11 @@
 
 ## Thông tin nhóm
 
-- Tên nhóm:
-- Lớp: L3A
-- Repo nhóm: `K5-L3A-DAY08-TenNhom-FromWorkflowsToAgents` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt:
+- Tên nhóm: NguDaiKage
+- Lớp: L3B
+- Repo nhóm: `K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents`
+- URL repo: [K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents); [danh sách PR](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents/pulls)
+- Nhánh nộp: `main`; commit chốt: chưa chốt, cập nhật sau khi hoàn thiện báo cáo nhóm.
 
 ## Thành viên
 

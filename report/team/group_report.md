@@ -4,12 +4,13 @@
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm:
+- Tên nhóm: NguDaiKage.
+- Lớp: L3B.
 - Người viết và tổng hợp báo cáo: Trần Thị Nhài — 2A202603911.
 - Người kiểm chứng và duyệt cuối: Hồ Trọng Nghĩa — 2A202603729.
 - Thành viên và phân công: xem [TEAM.md](../../TEAM.md).
-- Repo: [K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents).
-- Commit chốt (trùng decision_adr.md):
+- Repo: [K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents); [danh sách PR](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents/pulls).
+- Commit chốt (trùng decision_adr.md): chưa chốt; cập nhật sau khi hoàn thiện tích hợp và báo cáo.
 
 ## 2. Mục tiêu và cách tiếp cận
 
