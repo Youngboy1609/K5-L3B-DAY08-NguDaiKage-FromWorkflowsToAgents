@@ -1,5 +1,8 @@
 # Research card
 
+- Người phụ trách: Trần Thị Nhài — 2A202603911.
+- Trạng thái: đã hoàn thành. Nguồn đã kiểm chứng trên ACL Anthology; giả thuyết được commit (`d910497`) trước khi đo; kết quả lấy từ `src/reports/research_ablation.json`.
+
 File này nằm cố định ở `report/team/research_card.md`; `python -m lab8.check_submission` đọc cột "Nhóm điền" bằng máy.
 
 Phần này nối tiếp phần mini research ở buổi lý thuyết (slide 62–63). Chọn **một** câu R1–R4, điền 6 dòng, rồi biến nó thành **một ablation** chạy được trong lab: giữ nguyên model (MockLLM), tool, seed, corpus và giá, chỉ thay đổi một biến.
@@ -39,3 +42,10 @@ Phần này nối tiếp phần mini research ở buổi lý thuyết (slide 62�
 - Giới hạn: MockLLM không phải model sản xuất, latency là `unavailable`. Kết quả chỉ đúng cho 14 claim public và bảng giá mô phỏng trong `config/pricing.yaml`. Với model thật, câu draft là thứ khách hàng đọc, nên "draft không ảnh hưởng pass" chỉ đúng vì grader của lab không chấm câu chữ trả lời.
 
 Muốn đi xa hơn một ablation để lấy điểm cộng thì xem [docs/bonus_topics.md](../../docs/bonus_topics.md).
+
+## Bằng chứng
+
+- Module/script: `src/bonus/swarm_no_draft.py`, `src/bonus/research_ablation.py`.
+- Test: `src/tests/test_research_ablation.py`.
+- Kết quả: `src/reports/research_ablation.json`, do script sinh.
+- Thí nghiệm này độc lập với B3 của Quang; số liệu và kết luận đã đưa vào mục 4.3 của báo cáo nhóm để Nghĩa kiểm chứng.

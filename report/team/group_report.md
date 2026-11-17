@@ -1,14 +1,15 @@
 # Báo cáo nhóm — Lab 8 LogiX-VN
 
-> **Trạng thái: bản nháp trước tích hợp.** Mục 4.1 đang dùng số chạy thử và phải được thay bằng số từ `src/reports/benchmark.json` sau khi workflow vào `main`. Các chỗ đánh dấu **[CHỜ]** chưa có bằng chứng. Giới hạn: tối đa 5 trang ngoài phụ lục.
+> **Trạng thái: bản nháp, workflow vừa vào `main`.** Mục 4.1 và 4.2 còn dùng số chạy thử trước tích hợp và phải được thay bằng số từ `src/reports/benchmark.json` chạy trên bản đã gộp. Các chỗ đánh dấu **[CHỜ]** chưa có bằng chứng. Giới hạn: tối đa 5 trang ngoài phụ lục.
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm: NguDaiKage
+- Tên nhóm: NguDaiKage.
+- Lớp: L3B.
 - Người viết và tổng hợp báo cáo: Trần Thị Nhài — 2A202603911.
 - Người kiểm chứng và duyệt cuối: Hồ Trọng Nghĩa — 2A202603729.
 - Thành viên và phân công: xem [TEAM.md](../../TEAM.md).
-- Repo: [K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents).
+- Repo: [K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents); [danh sách PR](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents/pulls).
 - Commit chốt (trùng `report/team/decision_adr.md`): **[CHỜ]** Nghĩa chốt sau tích hợp.
 
 ## 2. Mục tiêu và cách tiếp cận
@@ -25,7 +26,7 @@ Năm người làm song song từ host, runtime, swarm tham chiếu và fixture 
 | Trần Thị Nhài | Test an toàn mức shape; research card R4 và ablation; benchmark/crash; viết báo cáo nhóm |
 | Phạm Đăng Quang | Bonus B3: verifier, bộ claim đối kháng, test và báo cáo bonus |
 
-Thứ tự vào `main`: orchestrator, bonus B3, single. Workflow đã viết xong trên nhánh của Nghĩa và chưa được gộp tại thời điểm viết bản nháp này.
+Thứ tự vào `main`: orchestrator, bonus B3, single, rồi workflow. Nhài tổng hợp số liệu và phân tích thực nghiệm thành báo cáo, Nghĩa đối chiếu bằng chứng và duyệt cuối; mỗi chủ shape đọc lại phần mô tả giải pháp của mình.
 
 ## 3. Giải pháp
 
@@ -93,7 +94,7 @@ Workflow chưa được nghiệm thu bằng bộ test an toàn trên `main`; tr�
 | Sự cố thực tế | Bằng chứng | Cách xử lý | Kết quả |
 | --- | --- | --- | --- |
 | Số slide trong tài liệu lab không khớp bộ slide N8 bản v3 (ví dụ bài EMNLP ghi ở slide 44, 59 nhưng thực tế ở trang 58) | Đối chiếu `docs/bonus_topics.md`, `report/team/research_card.md` với file slide | Dò theo nội dung thay vì số trang; tải bài gốc từ ACL Anthology và đối chiếu abstract, số trang, giải thưởng | Research card ghi số trang thực tế và nguồn đã mở được |
-| Hai nhánh cùng sửa `group_report.md` và `research_card.md` (nhánh `nhai` và nhánh workflow của Nghĩa) | `git diff origin/main...origin/feature/nghia-workflow-report-verification` | Bản này giữ nguyên bố cục khung của Nghĩa để dễ gộp; khi gộp lấy nội dung của người phụ trách file | **[CHỜ]** xử lý khi gộp |
+| Hai nhánh cùng sửa `group_report.md` và `research_card.md` (nhánh `nhai` và nhánh workflow của Nghĩa) | `git diff origin/main...origin/feature/nghia-workflow-report-verification` | Khi gộp `main` vào `nhai`: giữ nội dung của người phụ trách file (Nhài), lấy thêm từ bản của Nghĩa dòng lớp L3B, link danh sách PR và dòng người phụ trách | Đã gộp, không còn xung đột |
 | `src/reports/crash.json` được commit từ nhánh orchestrator, trong khi file thuộc phần benchmark | Commit `ca844d9` | Giữ file; Nhài sinh lại trên commit chốt để số khớp ADR | **[CHỜ]** |
 | Cổng host chậm dần khi thêm test tham số hóa (khoảng 9 giây lúc đầu, khoảng 45 giây khi đủ 4 shape) | Output `python -m pytest -q` | Chấp nhận, vì các test này phủ đúng ba điều kiện must-pass; nếu cần thì giảm số seed ở nhóm test rò rỉ | Vẫn xanh |
 
@@ -103,7 +104,7 @@ Bằng chứng dưới đây lấy từ lịch sử git tại thời điểm vi�
 
 | Thành viên | Commit kỹ thuật | Test đã thêm |
 | --- | --- | --- |
-| Hồ Trọng Nghĩa | `6317f88` (chưa vào `main`) | `src/tests/test_team_workflow.py` |
+| Hồ Trọng Nghĩa | `6317f88` | `src/tests/test_team_workflow.py` |
 | Nguyễn Đức Nhật | `7a193ce` | `src/tests/test_team_single.py` |
 | Ngô Ngọc Hải | `f55ab7b`, `8db0d9a` | `src/tests/test_team_orchestrator.py` |
 | Trần Thị Nhài | `4241ad2`, `f8e6c92`, `43d808b` | `src/tests/test_research_ablation.py`, `src/tests/test_team_safety.py` |
