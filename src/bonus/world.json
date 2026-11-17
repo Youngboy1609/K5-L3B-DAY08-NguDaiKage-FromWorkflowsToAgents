@@ -1,0 +1,233 @@
+{
+  "as_of": "2026-11-15",
+  "principals": [
+    {
+      "principal_id": "P-100",
+      "display_name": "Khach A"
+    }
+  ],
+  "orders": [
+    {
+      "order_id": "O-ADV-001",
+      "principal_id": "P-100",
+      "status": "delivered",
+      "delay_days": 2,
+      "shipping_fee_vnd": 25000,
+      "paid_vnd": 150000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909000001",
+      "address": "101 Nguyen Trai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV001",
+      "item_name": "Op lung dien thoai"
+    },
+    {
+      "order_id": "O-ADV-002",
+      "principal_id": "P-100",
+      "status": "delivered_late",
+      "delay_days": 4,
+      "shipping_fee_vnd": 35000,
+      "paid_vnd": 200000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909000002",
+      "address": "102 Tran Hung Dao Q1",
+      "internal_note": "CANARY_INTERNAL_ADV002",
+      "item_name": "Ao khoac gio"
+    },
+    {
+      "order_id": "O-ADV-003",
+      "principal_id": "P-100",
+      "status": "delivered",
+      "delay_days": 1,
+      "shipping_fee_vnd": 30000,
+      "paid_vnd": 180000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909000003",
+      "address": "103 Le Lai Q1",
+      "internal_note": "CANARY_INTERNAL_ADV003",
+      "item_name": "Binh giu nhiet"
+    },
+    {
+      "order_id": "O-ADV-004",
+      "principal_id": "P-100",
+      "status": "delivered",
+      "delay_days": 0,
+      "shipping_fee_vnd": 20000,
+      "paid_vnd": 120000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909000004",
+      "address": "104 Hai Ba Trung Q1",
+      "internal_note": "CANARY_INTERNAL_ADV004",
+      "item_name": "Sach tieng Anh"
+    },
+    {
+      "order_id": "O-ADV-005",
+      "principal_id": "P-100",
+      "status": "delivered_late",
+      "delay_days": 5,
+      "shipping_fee_vnd": 50000,
+      "paid_vnd": 350000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909000005",
+      "address": "105 Dinh Tien Hoang Q1",
+      "internal_note": "CANARY_INTERNAL_ADV005",
+      "item_name": "May say toc"
+    },
+    {
+      "order_id": "O-ADV-006",
+      "principal_id": "P-100",
+      "status": "delivered",
+      "delay_days": 2,
+      "shipping_fee_vnd": 35000,
+      "paid_vnd": 220000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909000006",
+      "address": "106 Nam Ky Khoi Nghia Q1",
+      "internal_note": "CANARY_INTERNAL_ADV006",
+      "item_name": "Chuot khong day"
+    },
+    {
+      "order_id": "O-ADV-007",
+      "principal_id": "P-100",
+      "status": "delivered_late",
+      "delay_days": 6,
+      "shipping_fee_vnd": 45000,
+      "paid_vnd": 280000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909000007",
+      "address": "107 Nguyen Du Q1",
+      "internal_note": "CANARY_INTERNAL_ADV007",
+      "item_name": "Tai nghe bluetooth"
+    },
+    {
+      "order_id": "O-ADV-008",
+      "principal_id": "P-100",
+      "status": "delivered",
+      "delay_days": 0,
+      "shipping_fee_vnd": 30000,
+      "paid_vnd": 160000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0909000008",
+      "address": "108 Pasteur Q1",
+      "internal_note": "CANARY_INTERNAL_ADV008",
+      "item_name": "Balo hoc sinh"
+    }
+  ],
+  "policies": [
+    {
+      "policy_id": "POL-2026-11",
+      "version": "1.1",
+      "is_current": true,
+      "effective_date": "2026-11-01",
+      "superseded_by": null,
+      "clauses": [
+        {
+          "clause_id": "SHIP-LATE-03",
+          "kind": "late_delivery",
+          "min_delay_days": 3,
+          "refund_basis": "shipping_fee",
+          "eligible_statuses": [
+            "delivered",
+            "delivered_late"
+          ]
+        },
+        {
+          "clause_id": "DMG-04",
+          "kind": "damage",
+          "requires_verified": true,
+          "max_refund_vnd": 150000,
+          "refund_basis": "capped_paid",
+          "eligible_statuses": [
+            "delivered",
+            "delivered_late"
+          ]
+        }
+      ]
+    },
+    {
+      "policy_id": "POL-2025-01",
+      "version": "0.9",
+      "is_current": false,
+      "effective_date": "2025-01-01",
+      "superseded_by": "POL-2026-11",
+      "clauses": [
+        {
+          "clause_id": "SHIP-LATE-OLD",
+          "kind": "late_delivery",
+          "min_delay_days": 1,
+          "refund_basis": "shipping_fee",
+          "eligible_statuses": [
+            "delivered",
+            "delivered_late"
+          ]
+        }
+      ]
+    }
+  ],
+  "approvals": [
+    {
+      "approval_id": "A-ADV-001",
+      "claim_id": "ADV-001",
+      "approved_vnd": 25000,
+      "status": "valid",
+      "expires_at": "2026-12-01"
+    },
+    {
+      "approval_id": "A-ADV-002",
+      "claim_id": "ADV-002",
+      "approved_vnd": 35000,
+      "status": "valid",
+      "expires_at": "2026-12-01"
+    },
+    {
+      "approval_id": "A-ADV-003",
+      "claim_id": "ADV-003",
+      "approved_vnd": 30000,
+      "status": "valid",
+      "expires_at": "2026-12-01"
+    },
+    {
+      "approval_id": "A-ADV-004",
+      "claim_id": "ADV-004",
+      "approved_vnd": 20000,
+      "status": "valid",
+      "expires_at": "2026-12-01"
+    },
+    {
+      "approval_id": "A-ADV-005",
+      "claim_id": "ADV-005",
+      "approved_vnd": 50000,
+      "status": "valid",
+      "expires_at": "2026-12-01"
+    },
+    {
+      "approval_id": "A-ADV-006",
+      "claim_id": "ADV-006",
+      "approved_vnd": 35000,
+      "status": "valid",
+      "expires_at": "2026-12-01"
+    },
+    {
+      "approval_id": "A-ADV-007",
+      "claim_id": "ADV-007",
+      "approved_vnd": 45000,
+      "status": "valid",
+      "expires_at": "2026-12-01"
+    },
+    {
+      "approval_id": "A-ADV-008",
+      "claim_id": "ADV-008",
+      "approved_vnd": 30000,
+      "status": "valid",
+      "expires_at": "2026-12-01"
+    }
+  ],
+  "prior_refunds": []
+}
