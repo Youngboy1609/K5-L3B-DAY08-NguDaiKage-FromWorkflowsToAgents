@@ -55,7 +55,7 @@ Mỗi người tự cập nhật báo cáo cá nhân mang MSSV của mình. Nhà
 
 ## Bảng đóng góp
 
-Plan phần Nghĩa (workflow, tích hợp, kiểm chứng báo cáo): [2026-11-17-workflow-integration-report-verification.md](docs/superpowers/plans/2026-11-17-workflow-integration-report-verification.md). Nhài là người viết group report; Nghĩa đối chiếu bằng chứng và duyệt cuối.
+Nhài là người viết group report; Nghĩa đối chiếu bằng chứng và duyệt cuối.
 
 `python -m lab8.check_submission` đọc bảng này bằng máy: giữ nguyên tiêu đề `## Bảng đóng góp` và các cột. Mỗi người một dòng: commit có nội dung và ít nhất một test đã thêm hoặc sửa.
 
