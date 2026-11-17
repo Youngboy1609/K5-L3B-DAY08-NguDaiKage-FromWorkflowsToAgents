@@ -63,6 +63,7 @@ Nhài là người viết group report; Nghĩa đối chiếu bằng chứng và
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Hồ Trọng Nghĩa (2A202603729) | Workflow + regression tests | `6317f88` | `tests/test_team_workflow.py` (6 cases) |
+| Phạm Đăng Quang | Bonus B3: Swarm verifier | 4b95632 | src/tests/test_bonus_b3.py |
 
 ## Cá nhân
 
