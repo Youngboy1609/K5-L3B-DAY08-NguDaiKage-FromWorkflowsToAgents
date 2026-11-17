@@ -1,5 +1,8 @@
 # Decision record
 
+- Người phụ trách: Hồ Trọng Nghĩa — 2A202603729.
+- Trạng thái: khung quyết định; các dòng kết quả để trống đến khi có benchmark, crash report và bằng chứng an toàn. Chưa chọn shape chính.
+
 Điền sau dấu `:` trên cùng dòng, không xóa nhãn. Giảng viên và `python -m lab8.check_submission` (chạy trong `src/`) đọc các dòng này bằng máy. Không đổi tên hay dời file này khỏi `report/team/`.
 `Shape chọn` phải là đúng một trong: `workflow`, `single`, `orchestrator`, `swarm`. Đây là shape được chấm cổng hidden.
 
