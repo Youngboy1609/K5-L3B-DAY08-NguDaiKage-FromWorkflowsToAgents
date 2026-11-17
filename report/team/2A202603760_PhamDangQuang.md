@@ -47,6 +47,7 @@
 
 - **Test Suite:** Chạy `python -m pytest -q tests/test_bonus_b3.py` đạt **4 passed in 0.66s**.
 - **Cổng Host:** Chạy `python -m pytest -q` đạt **54 passed**.
+- **Mã commit kỹ thuật:** `4b95632` (triển khai B3 code, test, reports), `4a706b8` (cập nhật bảng đóng góp).
 - **Kết quả đo lường trên tập đối kháng:**
   - `swarm`: Pass rate = 0.800, Pass^5 = **0.000**, Variance = 0.160000, Cost/success = 67.98 VND.
   - `swarm_verified`: Pass rate = **1.000**, Pass^5 = **1.000**, Variance = **0.000000**, Cost/success = **56.38 VND**, 8 lần can thiệp override thành công.
