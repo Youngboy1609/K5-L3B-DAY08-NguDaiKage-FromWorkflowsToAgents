@@ -17,13 +17,13 @@ Phần này nối tiếp phần mini research ở buổi lý thuyết (slide 62�
 
 | Field | Hướng dẫn | Nhóm điền |
 | --- | --- | --- |
-| CÂU | R1 / R2 / R3 / R4 | |
-| SOURCE | Paper/blog, năm, URL, loại bằng chứng (benchmark, production report, blog kinh nghiệm) | |
-| CLAIM | Một kết luận gốc của nguồn. Không viết rộng hơn phạm vi paper | |
-| BOUNDARY | Model / dataset / setup giới hạn kết luận đó | |
-| HYPOTHESIS | Nếu đổi shape A→B (hoặc bật/tắt một thành phần), metric X sẽ đổi theo hướng nào, khoảng bao nhiêu | |
-| METHOD | Biến giữ cố định: model, tools, seed, corpus, giá, evaluator. Biến duy nhất được thay đổi: … | |
-| FAILURE / METRIC | Một lỗi dự kiến và cách đo nó: pass rate, pass^5, variance, cost/success, leak, bypass | |
+| CÂU | R1 / R2 / R3 / R4 | R4 · Evaluation confounders (slide N8 bản v3: trang 58 và 68) |
+| SOURCE | Paper/blog, năm, URL, loại bằng chứng (benchmark, production report, blog kinh nghiệm) | Zhang, Zhang, Lu và cộng sự, *Rethinking the Evaluation of Efficiency Methods for Multi-Agent Systems*, EMNLP 2026 (Outstanding Paper Award, ghi trên trang ACL Anthology của bài), trang 18527–18562, https://aclanthology.org/2026.emnlp-main.798/, DOI 10.18653/2026.emnlp-main.798; bản arXiv: https://arxiv.org/abs/2609.05933. Loại bằng chứng: benchmark chẩn đoán có kiểm soát trên 5 phương pháp cắt gọn MAS. Nhóm đã đọc bản PDF của kỷ yếu. |
+| CLAIM | Một kết luận gốc của nguồn. Không viết rộng hơn phạm vi paper | Nhiều mức cải thiện hiệu quả được báo cáo cho MAS phụ thuộc vào setup đánh giá: khi giữ chung backbone, agent registry và runtime, một phần cải thiện đến từ những hệ khởi đầu mà cắt ngẫu nhiên đã giữ được accuracy, chứ không phải cải thiện bền vững về hiệu quả. |
+| BOUNDARY | Model / dataset / setup giới hạn kết luận đó | Bài chỉ xét nhóm phương pháp nhận một MAS có sẵn rồi tái cấu trúc (cắt agent hoặc cạnh giao tiếp); 4 nhóm task cộng phần mở rộng HotpotQA, toàn tiếng Anh; backbone mã nguồn mở cỡ nhỏ 4B–8B cố định theo nhóm task; cost là proxy đếm token. Tác giả ghi rõ đây là bằng chứng chẩn đoán cho các phương pháp và setting đã thử, không phải cho mọi triển khai MAS. Khác với lab: bài cắt topology trên LLM thật, còn nhóm cắt một lời gọi model trên MockLLM; nhóm mượn phương pháp so sánh, không tái lập kết quả của bài. |
+| HYPOTHESIS | Nếu đổi shape A→B (hoặc bật/tắt một thành phần), metric X sẽ đổi theo hướng nào, khoảng bao nhiêu | Tắt riêng bước draft trên swarm tham chiếu: pass rate, pass^5 và seed variance không đổi; mean model calls giảm đúng 1 mỗi trial; cost/success giảm khoảng 2% (ước tính trước khi đo: một lần draft khoảng 0,9 VND so với khoảng 50 VND tiền tool mỗi trial theo config/pricing.yaml). Giả thuyết bị bác bỏ nếu có bất kỳ cặp (claim, seed) nào đổi status hoặc proposal khi tắt draft, hoặc nếu cost/success giảm quá 10%. |
+| METHOD | Biến giữ cố định: model, tools, seed, corpus, giá, evaluator. Biến duy nhất được thay đổi: … | Giữ cố định: MockLLM, bộ tool, 14 claim public, seed 11,22,33,44,55, config/pricing.yaml, evaluator lab8.metrics, DB mới cho mỗi trial và toàn bộ logic swarm kể cả REFERENCE_WEAKNESS. Biến duy nhất được thay đổi: có gọi complete(purpose="draft") hay không. Ba nhánh chạy cùng lúc: swarm gốc, bản chép bật draft (control) và bản chép tắt draft. |
+| FAILURE / METRIC | Một lỗi dự kiến và cách đo nó: pass rate, pass^5, variance, cost/success, leak, bypass | Lỗi dự kiến: bản chép của swarm lệch khỏi bản gốc, khiến khác biệt không còn do draft. Cách đo: nhánh control phải trùng swarm gốc ở status, proposal, model calls, tool calls và cost trên mọi cặp (claim, seed). Metric so sánh giữa control và bản tắt draft: pass rate, pass^5, seed variance, cost/success, mean model calls; số trial lộ secret và số refund thiếu approval phải bằng 0 ở cả hai nhánh. |
 
 ## Kết quả ablation
 
