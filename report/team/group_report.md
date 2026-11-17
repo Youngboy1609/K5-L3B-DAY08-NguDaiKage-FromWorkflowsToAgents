@@ -1,6 +1,6 @@
 # Báo cáo nhóm — Lab 8 LogiX-VN
 
-> **Trạng thái: bản chờ duyệt.** Số liệu mục 4 lấy từ các file trong `src/reports/`, sinh trên bản đã gộp đủ 4 shape (nhánh `nhai`, commit gộp `cc05d4c`). Các chỗ đánh dấu **[CHỜ]** chưa có bằng chứng. Giới hạn: tối đa 5 trang ngoài phụ lục.
+> Bản tổng hợp kết quả từ các file sinh bằng công cụ trong `src/reports/`. Bộ `student_drop` được dùng cho self-check không nhãn; không có dữ liệu hidden hay nhãn chấm nào được commit. Điểm hidden chính thức chỉ do grader riêng của giảng viên xác nhận. Giới hạn: tối đa 5 trang ngoài phụ lục.
 
 ## 1. Thông tin nhóm
 
@@ -78,14 +78,14 @@ Ba điều đọc được từ bảng:
 | Không rò secret/PII | Cả 4 shape: 14 claim × seed 11 và 55, quét trace, kết quả và stdout với secret của mọi claim và PII của mọi order | `src/tests/test_team_safety.py` |
 | Tái lập | Cùng claim, cùng seed cho kết quả giống hệt; file ablation chạy lại hai lần giống nhau | `src/tests/test_team_safety.py`, `src/reports/research_ablation.json` |
 | Hidden chính ≥ 0.75; gate bonus ≥ 0.80 | Chưa có kết quả chính thức | Grader của giảng viên |
-| Tự kiểm hidden không nhãn | Chưa nhận `student_drop/` **[CHỜ]** | `src/reports/hidden_selfcheck.json` nếu có |
+| Tự kiểm hidden không nhãn | Đã chạy 40 claim × 5 seed trên mỗi shape: workflow, single và orchestrator; mỗi shape có 200 trial, không có status `error`, lỗi trace contract hoặc `leak_suspect`. Không tính pass rate vì không có nhãn. | `src/reports/hidden_selfcheck.json`; file `student_drop.zip` không nằm trong repo |
 
 ### 4.3. Quyết định kiến trúc, nghiên cứu và bonus
 
-- **Shape được chọn:** Nghĩa chốt trong [decision_adr.md](decision_adr.md) **[CHỜ]**. Số liệu nghiêng về workflow: cùng pass rate và variance với single và orchestrator, cost/success thấp hơn khoảng 40%, và là shape ít tự chủ nhất.
+- **Shape được chọn: workflow.** Trên public, workflow, single và orchestrator đều đạt 70/70; workflow có cost/success thấp nhất (27,86 VND) và là kiến trúc ít tự chủ nhất. Self-check hidden xác nhận workflow chạy hết 200 trial không lỗi trace hoặc leak suspect, nhưng không đánh giá độ đúng vì bộ dữ liệu không có nhãn. Kết luận phụ thuộc vào điểm hidden chính thức và các must-pass.
 - **Ablation R4** ([research_card.md](research_card.md), `src/reports/research_ablation.json`): tắt riêng bước draft trên swarm. Nhánh đối chứng trùng swarm gốc trên 70/70 cặp (claim, seed). Pass rate, pass^5 và variance không đổi; không cặp nào đổi quyết định; model calls giảm đúng 1 mỗi trial; cost/success giảm từ 49,57 xuống 48,62 VND (1,9%). Giả thuyết ghi trước khi đo được xác nhận. Hệ quả cho bảng 4.1: phần cost do các lời gọi model "trò chuyện" gây ra là nhỏ, nên chênh cost giữa các shape phản ánh số tool call chứ không phải mức độ đa tác tử.
-- **Bonus B3** ([bonus_report.md](bonus_report.md), `src/reports/bonus_b3_*.json`): thêm verifier bằng code trước khi ghi tiền. Trên bộ public, `swarm_verified` đạt pass rate 1.000 (swarm 0.986); trên 8 claim đối kháng viết tay, 1.000 so với 0.800, với 8 lần verifier can thiệp. So sánh thêm với workflow **[CHỜ]** Quang bổ sung sau tích hợp.
-- **Run id dẫn chứng:** `R-swarm-C-002-s55` (swarm trả sai vì tin ticket) so với `R-orchestrator-C-002-s55` và `R-single-C-002-s55` (từ chối đúng); `R-swarm_no_draft-C-001-s11` cho ablation.
+- **Bonus B3** ([bonus_report.md](bonus_report.md), `src/reports/bonus_b3_*.json`): thêm verifier bằng code trước khi ghi tiền. Trên public, `swarm_verified` đạt pass rate 1.000 (swarm 0.986); trên 8 claim đối kháng viết tay, đạt 1.000 so với 0.800 của swarm, với 8 lần verifier can thiệp. Trên cùng corpus public, workflow cũng đạt 1.000 nhưng cost/success thấp hơn: 27,86 VND so với 49,00 VND của `swarm_verified`. Vì vậy B3 sửa được điểm yếu của swarm tham chiếu trên tập đối kháng; kết quả hiện có không cho thấy verifier tốt hơn workflow cho luồng tuần tự này. Bộ đối kháng B3 chưa chạy workflow.
+- **Run id dẫn chứng:** `R-workflow-C-002-s55` (từ chối đúng) và `R-swarm-C-002-s55` (swarm trả sai vì tin ticket); `R-orchestrator-C-002-s55` và `R-single-C-002-s55` cũng từ chối đúng; `R-swarm_no_draft-C-001-s11` cho ablation.
 
 ## 5. Khó khăn và cách xử lý
 
@@ -114,7 +114,7 @@ Bằng chứng dưới đây lấy từ lịch sử git tại thời điểm vi�
 - Bộ public chỉ có 14 claim và không phân biệt được ba shape nhóm viết về độ đúng. Kết quả public không thay thế đánh giá hidden.
 - Vòng ReAct của single dùng một chính sách chọn tool viết bằng code, vì MockLLM không trả về lời gọi tool có cấu trúc. Với model thật, thứ tự và số bước có thể dao động, nên variance bằng 0 của single ở đây không dự báo được variance khi triển khai.
 - Grader không chấm câu trả lời cho khách, nên các bước soạn chữ (như draft của swarm) không ảnh hưởng pass rate trong lab. Ngoài thực tế đó là thứ khách hàng đọc.
-- Điều kiện khiến lựa chọn kiến trúc thay đổi: **[CHỜ]** đồng bộ với ADR. Gợi ý từ số liệu: nếu claim cần đọc nhiều nguồn độc lập hoặc đường đi không biết trước, phần cost thêm của single hoặc orchestrator mới đáng đổi.
+- Điều kiện khiến lựa chọn kiến trúc thay đổi: nếu grader hidden cho workflow dưới ngưỡng 0,75, nếu một must-pass thất bại, hoặc nếu workload thực tế cần điều tra song song đủ để bù chi phí thêm của single/orchestrator. Self-check không nhãn không xác nhận các điều kiện này.
 
 ## 8. Tài liệu tham khảo
 
