@@ -59,7 +59,7 @@ Mỗi người tự cập nhật báo cáo cá nhân mang MSSV của mình. Nhà
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| | | | |
+| Phạm Đăng Quang | Bonus B3: Swarm verifier | 4b95632 | src/tests/test_bonus_b3.py |
 
 ## Cá nhân
 
