@@ -59,10 +59,9 @@ Quyết định kỹ thuật:
 - Dùng vào việc gì:
   - Đọc đề bài, contract và code host, giải thích phần việc của tôi theo `TEAM.md`.
   - Soạn code `swarm_no_draft.py`, `research_ablation.py`, hai file test, và bản nháp nội dung research card và báo cáo nhóm. Phần lớn code và câu chữ trong các file này do AI soạn theo yêu cầu của tôi.
-  - Đọc bộ slide N8 và bài báo gốc để đối chiếu với research card; tìm link bài trên web.
   - Phân tích hai file bị xung đột khi gộp `main` và đề xuất giữ phần nào.
 - Tôi đã tự kiểm tra thế nào:
-  - Nguồn nghiên cứu: không dùng link AI đưa ra khi chưa mở. Tôi tự mở trang arXiv và trang ACL Anthology của bài, đối chiếu tên bài, tác giả, số trang, DOI và dòng Outstanding Paper Award. Số slide trong tài liệu lab không khớp bộ slide bản v3, nên tôi tìm đúng trang theo nội dung.
+  - Nguồn nghiên cứu: Tôi tìm kiếm và mở trang arXiv và trang ACL Anthology của bài, đối chiếu tên bài, tác giả, số trang, DOI và dòng Outstanding Paper Award. Số slide trong tài liệu lab không khớp bộ slide bản v3, nên tôi tìm đúng trang theo nội dung.
   - Code và số liệu: mọi con số trong research card và báo cáo nhóm lấy từ file JSON do script sinh, không chép từ câu trả lời của AI. Tôi chạy lại `pytest`, script ablation và benchmark; các file JSON chạy lại cho cùng nội dung.
   - Thứ tự giả thuyết và số đo: tôi commit research card trước khi viết code ablation.
   - Tôi tự commit, push và gộp nhánh; đọc lại diff trước mỗi commit.
@@ -71,7 +70,7 @@ Quyết định kỹ thuật:
 
 - Đạt: research card R4 có nguồn đã kiểm chứng và một ablation một biến chạy lại được; bộ test an toàn phủ ba điều kiện must-pass trên cả 4 shape; benchmark và crash chính thức đã sinh; báo cáo nhóm có số thật.
 - Hạn chế:
-  - Tôi dựa nhiều vào AI để viết code và câu chữ; phần tôi tự làm chủ yếu là kiểm chứng nguồn, chạy lại, đọc kết quả và quyết định giữ gì.
+  - Tôi dựa vào AI để viết code và câu chữ; phần tôi tự làm chủ yếu là kiểm chứng nguồn, chạy lại, đọc kết quả và quyết định giữ gì.
   - Hai file test của tôi làm cổng host chậm từ khoảng 9 giây lên khoảng 45 giây.
   - Số đếm "refund thiếu approval" trong JSON ablation là suy ra từ lý do fail của evaluator, vì evaluator public không xuất bộ đếm bypass riêng.
   - Chưa tự kiểm trên bộ hidden.
