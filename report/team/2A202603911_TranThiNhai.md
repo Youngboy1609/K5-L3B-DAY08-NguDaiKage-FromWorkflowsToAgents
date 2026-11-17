@@ -50,7 +50,7 @@ Quyết định kỹ thuật:
 - Crash suite: `src/reports/crash.json` → `crash_safety 20/20`.
 - `python -m pytest -q` trên bản đủ 4 shape → 425 passed, không fail, không skip.
 - `python -m pytest -q -m student -o addopts=` → 248 passed.
-- `python -m lab8.check_submission` → `benchmark.json`, `crash.json`, ba shape và `research_card.md` đều `[ OK ]`; 7 FAIL còn lại nằm ở `decision_adr.md` chưa điền.
+- `python -m lab8.check_submission` → `0 FAIL`; ADR đã được điền. Cổng được chạy lại sau khi commit để xác nhận working tree sạch.
 - Nhóm trưởng chạy self-check không nhãn; `src/reports/hidden_selfcheck.json` ghi 40 claim × 5 seed trên workflow, single và orchestrator. Mỗi shape có 200 trial, không có status `error`, lỗi trace contract hay `leak_suspect`. Bộ này không có nhãn, nên không tính pass rate và không thay thế kết quả grader của giảng viên.
 - Nguồn nghiên cứu: https://aclanthology.org/2026.emnlp-main.798/ (EMNLP 2026, trang 18527–18562, Outstanding Paper Award).
 

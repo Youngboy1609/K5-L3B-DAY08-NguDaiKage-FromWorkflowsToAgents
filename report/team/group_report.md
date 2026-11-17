@@ -10,7 +10,7 @@
 - Người kiểm chứng và duyệt cuối: Hồ Trọng Nghĩa — 2A202603729.
 - Thành viên và phân công: xem [TEAM.md](../../TEAM.md).
 - Repo: [K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents); [danh sách PR](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents/pulls).
-- Commit chốt (trùng `report/team/decision_adr.md`): **[CHỜ]** Nghĩa chốt sau tích hợp.
+- Commit evidence (trùng `report/team/decision_adr.md`): `e629d25`.
 
 ## 2. Mục tiêu và cách tiếp cận
 

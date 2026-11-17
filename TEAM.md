@@ -6,7 +6,7 @@
 - Lớp: L3B
 - Repo nhóm: `K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents`
 - URL repo: [K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents); [danh sách PR](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents/pulls)
-- Nhánh nộp: `main`; commit chốt: chưa chốt, cập nhật sau khi hoàn thiện báo cáo nhóm.
+- Nhánh nộp: `main`; commit evidence được ghi trong ADR: `e629d25`.
 
 ## Thành viên
 

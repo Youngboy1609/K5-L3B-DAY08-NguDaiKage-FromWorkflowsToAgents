@@ -26,7 +26,7 @@
 - Trên bản tích hợp đủ 4 shape và R4: `python -m pytest -q` — 425 passed; ma trận student — 248 passed; `python -m lab8.smoke` pass; crash suite — 20/20.
 - Benchmark public: 4 shape × 14 claim × 5 seed; workflow đạt 70/70, pass rate 1.000, cost/success 27,86 VND mô phỏng.
 - Self-check ẩn không nhãn: workflow chạy 200 trial trên 40 claim × 5 seed; 0 status `error`, 0 lỗi trace contract và 0 `leak_suspect`. Vì không có nhãn, đây không phải pass rate và không thay grader chính thức.
-- `python -m lab8.check_submission` sau khi điền ADR — bổ sung kết quả cuối trước khi nộp.
+- `python -m lab8.check_submission` — 0 FAIL sau khi điền ADR; chạy lại trên commit sạch trước khi nộp.
 
 ## 5. Công cụ AI đã dùng
 
