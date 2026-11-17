@@ -1,6 +1,6 @@
 # Báo cáo nhóm — Lab 8 LogiX-VN
 
-> **Trạng thái: bản nháp, workflow vừa vào `main`.** Mục 4.1 và 4.2 còn dùng số chạy thử trước tích hợp và phải được thay bằng số từ `src/reports/benchmark.json` chạy trên bản đã gộp. Các chỗ đánh dấu **[CHỜ]** chưa có bằng chứng. Giới hạn: tối đa 5 trang ngoài phụ lục.
+> **Trạng thái: bản chờ duyệt.** Số liệu mục 4 lấy từ các file trong `src/reports/`, sinh trên bản đã gộp đủ 4 shape (nhánh `nhai`, commit gộp `cc05d4c`). Các chỗ đánh dấu **[CHỜ]** chưa có bằng chứng. Giới hạn: tối đa 5 trang ngoài phụ lục.
 
 ## 1. Thông tin nhóm
 
@@ -49,7 +49,7 @@ Cả ba shape nhóm viết chung một ranh giới: **code** đọc dữ liệu 
 
 ### 4.1. Benchmark chính
 
-> **Số chạy thử, chưa phải số nộp.** Bảng dưới lấy từ một lần chạy `lab8.benchmark` trên bản ghép tạm của nhánh `nhai` (commit `43d808b`) với `workflow.py` từ nhánh của Nghĩa (commit `6317f88`), ghi ra file tạm ngoài repo. Sau khi workflow vào `main`, Nhài chạy lại lệnh chuẩn để sinh `src/reports/benchmark.json` và thay bảng này.
+Nguồn: `src/reports/benchmark.json`, sinh bằng lệnh chuẩn trong `src/reports/README.md` trên bản đã gộp đủ 4 shape. Chạy lại hai lần cho file giống hệt nhau.
 
 14 claim public × 5 seed (`11,22,33,44,55`) = 70 trial mỗi shape, SQLite mới cho mỗi trial. Cost là VND mô phỏng; latency của MockLLM là `unavailable`.
 
@@ -70,21 +70,19 @@ Ba điều đọc được từ bảng:
 
 | Yêu cầu | Trạng thái | Bằng chứng |
 | --- | --- | --- |
-| Cổng host `python -m pytest -q` | Xanh trên nhánh `nhai`: 370 passed, 49 skipped (49 test của workflow bị bỏ qua vì còn là stub). Trên bản ghép tạm có workflow: 425 passed, không skip | Chạy lại sau tích hợp **[CHỜ]** |
-| Ma trận student T01–T14 | Trên bản ghép tạm: 248/248 | Chạy lại sau tích hợp **[CHỜ]** |
-| Crash safety 20/20 | Đạt | `src/reports/crash.json` (sinh lại trên commit chốt **[CHỜ]**) |
-| Crash ở mức shape | Single, orchestrator, swarm: cả 3 điểm crash, chạy lại đúng một refund và một audit | `src/tests/test_team_safety.py` |
-| Không refund khi approval hỏng | Single, orchestrator, swarm: approval thiếu, bị thu hồi, hết hạn hoặc mượn của claim khác đều không ghi ledger, có audit `policy_denied` | `src/tests/test_team_safety.py` |
-| Không rò secret/PII | Single, orchestrator, swarm: 14 claim × seed 11 và 55, quét trace, kết quả và stdout với secret của mọi claim và PII của mọi order | `src/tests/test_team_safety.py` |
+| Cổng host `python -m pytest -q` | Xanh: 425 passed, không fail, không skip | Chạy trên bản đã gộp đủ 4 shape |
+| Ma trận student T01–T14 | 248/248 (4 shape × 62 test) | `python -m pytest -q -m student -o addopts=` trên bản đã gộp |
+| Crash safety 20/20 | Đạt | `src/reports/crash.json`, sinh lại trên bản đã gộp, nội dung trùng bản đã commit |
+| Crash ở mức shape | Cả 4 shape: cả 3 điểm crash, chạy lại đúng một refund và một audit | `src/tests/test_team_safety.py` |
+| Không refund khi approval hỏng | Cả 4 shape: approval thiếu, bị thu hồi, hết hạn hoặc mượn của claim khác đều không ghi ledger, có audit `policy_denied` | `src/tests/test_team_safety.py` |
+| Không rò secret/PII | Cả 4 shape: 14 claim × seed 11 và 55, quét trace, kết quả và stdout với secret của mọi claim và PII của mọi order | `src/tests/test_team_safety.py` |
 | Tái lập | Cùng claim, cùng seed cho kết quả giống hệt; file ablation chạy lại hai lần giống nhau | `src/tests/test_team_safety.py`, `src/reports/research_ablation.json` |
 | Hidden chính ≥ 0.75; gate bonus ≥ 0.80 | Chưa có kết quả chính thức | Grader của giảng viên |
 | Tự kiểm hidden không nhãn | Chưa nhận `student_drop/` **[CHỜ]** | `src/reports/hidden_selfcheck.json` nếu có |
 
-Workflow chưa được nghiệm thu bằng bộ test an toàn trên `main`; trên bản ghép tạm nó qua toàn bộ.
-
 ### 4.3. Quyết định kiến trúc, nghiên cứu và bonus
 
-- **Shape được chọn:** Nghĩa chốt trong [decision_adr.md](decision_adr.md) sau benchmark chính thức **[CHỜ]**. Số chạy thử nghiêng về workflow: cùng pass rate và variance với single và orchestrator, cost/success thấp hơn khoảng 40%, và là shape ít tự chủ nhất.
+- **Shape được chọn:** Nghĩa chốt trong [decision_adr.md](decision_adr.md) **[CHỜ]**. Số liệu nghiêng về workflow: cùng pass rate và variance với single và orchestrator, cost/success thấp hơn khoảng 40%, và là shape ít tự chủ nhất.
 - **Ablation R4** ([research_card.md](research_card.md), `src/reports/research_ablation.json`): tắt riêng bước draft trên swarm. Nhánh đối chứng trùng swarm gốc trên 70/70 cặp (claim, seed). Pass rate, pass^5 và variance không đổi; không cặp nào đổi quyết định; model calls giảm đúng 1 mỗi trial; cost/success giảm từ 49,57 xuống 48,62 VND (1,9%). Giả thuyết ghi trước khi đo được xác nhận. Hệ quả cho bảng 4.1: phần cost do các lời gọi model "trò chuyện" gây ra là nhỏ, nên chênh cost giữa các shape phản ánh số tool call chứ không phải mức độ đa tác tử.
 - **Bonus B3** ([bonus_report.md](bonus_report.md), `src/reports/bonus_b3_*.json`): thêm verifier bằng code trước khi ghi tiền. Trên bộ public, `swarm_verified` đạt pass rate 1.000 (swarm 0.986); trên 8 claim đối kháng viết tay, 1.000 so với 0.800, với 8 lần verifier can thiệp. So sánh thêm với workflow **[CHỜ]** Quang bổ sung sau tích hợp.
 - **Run id dẫn chứng:** `R-swarm-C-002-s55` (swarm trả sai vì tin ticket) so với `R-orchestrator-C-002-s55` và `R-single-C-002-s55` (từ chối đúng); `R-swarm_no_draft-C-001-s11` cho ablation.
@@ -95,7 +93,7 @@ Workflow chưa được nghiệm thu bằng bộ test an toàn trên `main`; tr�
 | --- | --- | --- | --- |
 | Số slide trong tài liệu lab không khớp bộ slide N8 bản v3 (ví dụ bài EMNLP ghi ở slide 44, 59 nhưng thực tế ở trang 58) | Đối chiếu `docs/bonus_topics.md`, `report/team/research_card.md` với file slide | Dò theo nội dung thay vì số trang; tải bài gốc từ ACL Anthology và đối chiếu abstract, số trang, giải thưởng | Research card ghi số trang thực tế và nguồn đã mở được |
 | Hai nhánh cùng sửa `group_report.md` và `research_card.md` (nhánh `nhai` và nhánh workflow của Nghĩa) | `git diff origin/main...origin/feature/nghia-workflow-report-verification` | Khi gộp `main` vào `nhai`: giữ nội dung của người phụ trách file (Nhài), lấy thêm từ bản của Nghĩa dòng lớp L3B, link danh sách PR và dòng người phụ trách | Đã gộp, không còn xung đột |
-| `src/reports/crash.json` được commit từ nhánh orchestrator, trong khi file thuộc phần benchmark | Commit `ca844d9` | Giữ file; Nhài sinh lại trên commit chốt để số khớp ADR | **[CHỜ]** |
+| `src/reports/crash.json` được commit từ nhánh orchestrator, trong khi file thuộc phần benchmark | Commit `ca844d9` | Giữ file; Nhài sinh lại trên bản đã gộp | Nội dung trùng bản đã commit, vẫn 20/20 |
 | Cổng host chậm dần khi thêm test tham số hóa (khoảng 9 giây lúc đầu, khoảng 45 giây khi đủ 4 shape) | Output `python -m pytest -q` | Chấp nhận, vì các test này phủ đúng ba điều kiện must-pass; nếu cần thì giảm số seed ở nhóm test rò rỉ | Vẫn xanh |
 
 ## 6. Tổng hợp đóng góp
