@@ -12,7 +12,7 @@
 - Vai trò: QA; ablation độc lập cho research card R4; benchmark/crash chính thức; viết báo cáo nhóm.
 - File phụ trách: `src/tests/test_team_safety.py`, `src/tests/test_research_ablation.py`, `src/bonus/swarm_no_draft.py`, `src/bonus/research_ablation.py`, `src/reports/research_ablation.json`, `src/reports/benchmark.json`, `src/reports/crash.json`, `report/team/research_card.md`, `report/team/group_report.md`.
 - Phần ablation và test an toàn làm song song trên host và swarm tham chiếu, không phụ thuộc ba shape mới hay verifier B3 của Quang. Benchmark chính thức và báo cáo nhóm làm sau khi đủ 4 shape vào nhánh.
-- Chưa làm: tự kiểm hidden (`hidden_selfcheck.json`), vì nhóm chưa nhận `student_drop/` tại thời điểm viết.
+- Sau khi nhóm nhận `student_drop.zip`, nhóm trưởng chạy self-check không nhãn theo hướng dẫn repo; dữ liệu gốc không được đưa vào repo.
 
 ## 3. Đóng góp cụ thể
 
@@ -50,7 +50,8 @@ Quyết định kỹ thuật:
 - Crash suite: `src/reports/crash.json` → `crash_safety 20/20`.
 - `python -m pytest -q` trên bản đủ 4 shape → 425 passed, không fail, không skip.
 - `python -m pytest -q -m student -o addopts=` → 248 passed.
-- `python -m lab8.check_submission` → `benchmark.json`, `crash.json`, ba shape và `research_card.md` đều `[ OK ]`; 7 FAIL còn lại nằm ở `decision_adr.md` chưa điền.
+- `python -m lab8.check_submission` → `0 FAIL`; ADR đã được điền. Cổng được chạy lại sau khi commit để xác nhận working tree sạch.
+- Nhóm trưởng chạy self-check không nhãn; `src/reports/hidden_selfcheck.json` ghi 40 claim × 5 seed trên workflow, single và orchestrator. Mỗi shape có 200 trial, không có status `error`, lỗi trace contract hay `leak_suspect`. Bộ này không có nhãn, nên không tính pass rate và không thay thế kết quả grader của giảng viên.
 - Nguồn nghiên cứu: https://aclanthology.org/2026.emnlp-main.798/ (EMNLP 2026, trang 18527–18562, Outstanding Paper Award).
 
 ## 5. Công cụ AI đã dùng
@@ -73,5 +74,5 @@ Quyết định kỹ thuật:
   - Tôi dựa vào AI để viết code và câu chữ; phần tôi tự làm chủ yếu là kiểm chứng nguồn, chạy lại, đọc kết quả và quyết định giữ gì.
   - Hai file test của tôi làm cổng host chậm từ khoảng 9 giây lên khoảng 45 giây.
   - Số đếm "refund thiếu approval" trong JSON ablation là suy ra từ lý do fail của evaluator, vì evaluator public không xuất bộ đếm bypass riêng.
-  - Chưa tự kiểm trên bộ hidden.
+  - Self-check hidden không nhãn chỉ kiểm tra khả năng chạy, trace và dấu hiệu lộ secret; chưa có kết quả hidden chính thức.
 - Điều rút ra: muốn nói một chênh lệch là do kiến trúc thì phải có nhánh đối chứng và chỉ đổi một biến. Trong lab này bước draft không đi vào quyết định, và với bảng giá mô phỏng thì cost chủ yếu do số tool call, nên so cost giữa các shape phải báo kèm số model call và tool call.

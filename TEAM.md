@@ -6,7 +6,7 @@
 - Lớp: L3B
 - Repo nhóm: `K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents`
 - URL repo: [K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents); [danh sách PR](https://github.com/Youngboy1609/K5-L3B-DAY08-NguDaiKage-FromWorkflowsToAgents/pulls)
-- Nhánh nộp: `main`; commit chốt: chưa chốt, cập nhật sau khi hoàn thiện báo cáo nhóm.
+- Nhánh nộp: `main`; commit evidence được ghi trong ADR: `e629d25`.
 
 ## Thành viên
 
@@ -63,6 +63,9 @@ Nhài là người viết group report; Nghĩa đối chiếu bằng chứng và
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Hồ Trọng Nghĩa (2A202603729) | Workflow + regression tests | `6317f88` | `tests/test_team_workflow.py` (6 cases) |
+| Nguyễn Đức Nhật (2A202603812) | Single ReAct | `7a193ce` | `src/tests/test_team_single.py` (3 cases) |
+| Ngô Ngọc Hải (2A202603939) | Orchestrator + handoff | `f55ab7b`, `8db0d9a` | `src/tests/test_team_orchestrator.py` (19 cases) |
+| Trần Thị Nhài (2A202603911) | Ablation R4 + safety QA | `4241ad2`, `43d808b` | `src/tests/test_research_ablation.py` (143 cases), `src/tests/test_team_safety.py` (196 cases) |
 | Phạm Đăng Quang | Bonus B3: Swarm verifier | 4b95632 | src/tests/test_bonus_b3.py |
 
 ## Cá nhân
