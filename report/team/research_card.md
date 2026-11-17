@@ -27,9 +27,15 @@ Phần này nối tiếp phần mini research ở buổi lý thuyết (slide 62�
 
 ## Kết quả ablation
 
-- Lệnh đã chạy (copy nguyên văn):
-- Run id / file report:
-- Kết quả so với hypothesis (đúng / sai / không kết luận được), kèm số liệu:
-- Giới hạn: MockLLM không phải model sản xuất, latency là `unavailable`.
+- Lệnh đã chạy (copy nguyên văn): `python -m bonus.research_ablation --out reports/research_ablation.json` (chạy trong `src/`; chạy lại hai lần cho file giống hệt nhau).
+- Run id / file report: `src/reports/research_ablation.json`; 3 nhánh × 14 claim × 5 seed = 210 trial. Run id dẫn chứng cho cùng một trial ở ba nhánh: `R-swarm-C-001-s11`, `R-swarm_draft_control-C-001-s11`, `R-swarm_no_draft-C-001-s11`.
+- Kết quả so với hypothesis (đúng / sai / không kết luận được), kèm số liệu: **đúng** trên bộ public, không điều kiện bác bỏ nào xảy ra.
+  - Phép so sánh hợp lệ: nhánh control trùng swarm gốc trên 70/70 cặp (claim, seed) ở status, pass/fail, lý do, steps, model calls, tool calls và cost.
+  - Pass rate 0.986, pass^5 0.929, seed variance 0.000816, seed min–max 0.929–1.000: giống nhau ở cả ba nhánh. Không cặp nào đổi quyết định khi tắt draft (0/70); trial fail duy nhất vẫn là `C-002` seed 55 (điểm yếu tham chiếu).
+  - Mean model calls giảm từ 3.0 xuống 2.0, đúng 1 lời gọi ở 70/70 trial. Mean tool calls (4.66) và mean steps (2.80) không đổi.
+  - Cost/success giảm từ 49.57 xuống 48.62 VND, tức 1,9% (dự đoán khoảng 2%, ngưỡng bác bỏ 10%). Mỗi trial bớt 0,92–0,94 VND.
+  - Số trial lộ secret/PII và số trial refund thiếu approval: 0 ở cả ba nhánh.
+  - Ý nghĩa cho R4: trong lab này bước draft không đi vào quyết định, nên chênh lệch cost do nó gây ra không nói lên gì về topology. Khi so cost/success giữa bốn shape phải báo kèm số model call và tool call của từng shape; với bảng giá hiện tại cost chủ yếu do số tool call quyết định.
+- Giới hạn: MockLLM không phải model sản xuất, latency là `unavailable`. Kết quả chỉ đúng cho 14 claim public và bảng giá mô phỏng trong `config/pricing.yaml`. Với model thật, câu draft là thứ khách hàng đọc, nên "draft không ảnh hưởng pass" chỉ đúng vì grader của lab không chấm câu chữ trả lời.
 
 Muốn đi xa hơn một ablation để lấy điểm cộng thì xem [docs/bonus_topics.md](../../docs/bonus_topics.md).
